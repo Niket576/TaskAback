@@ -12,8 +12,10 @@ dotenv.config({ path: './config.env' });
 
 export const app = express();
 
+const allowedOrigins = process.env.FRONTEND_URL.split(",");
+
 app.use(cors({
-    origin: [process.env.FRONTEND_URL],
+    origin: allowedOrigins,
     methods: ['GET', 'POST', 'PUT', 'DELETE'],
     credentials: true,
 }))
